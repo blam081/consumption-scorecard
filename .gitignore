@@ -28,8 +28,10 @@ ENV/
 *.tmp
 .cache/
 
-# Large data files (keep CSVs for reference)
-# *.csv
+# Large data files (contain internal Salesforce data)
+*.csv
+*.xlsx
+*.tsv
 
 # Credentials
 credentials.json
