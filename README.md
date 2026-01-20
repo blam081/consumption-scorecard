@@ -47,49 +47,23 @@ This folder contains all source materials and documentation for the **Consumptio
   - Shows what portfolio reviews currently look like
   - Target state: Automate this in dashboard
 
-### 📊 AFDC Scorecard Data (28 CSV files)
+### 📊 AFDC Scorecard Data
 
-The "Copy of AFDC Scorecard" Google Sheet has been exported to multiple CSV files representing different views and data tables:
+All source data files are organized in the **`data/`** folder:
 
-#### Summary Views
-- `AFDC_Scorecard_AFDC_Summary_.csv` - Global summary across all OUs
-- `AFDC_Scorecard_Consumption_Summary_.csv` - Consumption cohort breakdown
-- `AFDC_Scorecard_CBR_Slide_Output.csv` - Executive presentation view
+- **28 CSV files** from "Copy of AFDC Scorecard" Google Sheet
+- **1 Excel file** - REG Workshop spreadsheet
+- **1 TSV file** - Metric definitions
+- **1 JSON file** - Metadata
 
-#### Agent Force Views
-- `AFDC_Scorecard_AF_Scorecard.csv` - Agent Force metrics by OU (36 rows)
-- `AFDC_Scorecard_AF_Funnel_View.csv` - Adoption funnel summary (78 rows)
-- `AFDC_Scorecard_AF_Accounts.csv` - Account-level detail (5,633 accounts)
-- `AFDC_Scorecard_AF_Funnel.csv` - Full funnel data (17,494 rows)
-- `AFDC_Scorecard_AF_Funnel_Lead_Partner.csv` - Partner-led implementations (17,315 rows)
-- `AFDC_Scorecard_AF_Master_Data.csv` - Complete Agent Force dataset (7,381 rows)
+**Key datasets:**
+- Full consumption data (49,895 rows)
+- NCR metrics (33,543 rows)
+- Account-level AF and DC details
+- Resource engagement tracking
+- Adoption funnel data
 
-#### Data Cloud Views
-- `AFDC_Scorecard_DC_Scorecard.csv` - Data Cloud metrics by OU (60 rows)
-- `AFDC_Scorecard_DC_Accounts.csv` - Account-level detail (4,759 accounts)
-- `AFDC_Scorecard_DC_Usage.csv` - Usage tracking (27,273 rows)
-- `AFDC_Scorecard_DC_Master_Data.csv` - Complete Data Cloud dataset (5,139 rows)
-- `AFDC_Scorecard_Datacloud_Adoption_funnel.csv` - DC adoption stages (7,679 rows)
-- `AFDC_Scorecard_Legacy_CDP.csv` - Legacy Customer Data Platform data (5,214 rows)
-
-#### Resource Engagement
-- `AFDC_Scorecard_CL_Leader_View.csv` - Customer Lift leader summary (84 rows)
-- `AFDC_Scorecard_CL_View.csv` - CL engagement view (51 rows)
-- `AFDC_Scorecard_CL_Cases.csv` - CL case tracking (916 rows)
-- `AFDC_Scorecard_AF_Cloud_Success_Engagement.csv` - AF Cloud Success (6,436 rows)
-- `AFDC_Scorecard_DC_Cloud_Success_Engagement.csv` - DC Cloud Success (5,851 rows)
-
-#### Supporting Data
-- `AFDC_Scorecard_Consumption_Data.csv` - Full consumption dataset (49,895 rows) 🔥
-- `AFDC_Scorecard_Consumption_Data-PQ.csv` - Prior quarter consumption (42,019 rows)
-- `AFDC_Scorecard_Mapping.csv` - Data mappings (1,324 rows)
-- `AFDC_Scorecard_FDE.csv` - Fast Deploy Engineer data (227 rows)
-- `AFDC_Scorecard_NCR.csv` - NCR metrics (33,543 rows) 🔥
-- `AFDC_Scorecard_Sheet20.csv` - Analysis sheet (450 rows)
-- `AFDC_Scorecard_Sheet22.csv` - Additional analysis (15 rows)
-
-#### Metadata
-- `AFDC_Scorecard_Metadata.json` - Google Sheets structure and metadata
+⚠️ **Note:** The `data/` folder is excluded from Git (contains internal Salesforce data). See `data/README.md` for detailed inventory.
 
 ---
 

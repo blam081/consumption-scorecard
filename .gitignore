@@ -29,6 +29,7 @@ ENV/
 .cache/
 
 # Large data files (contain internal Salesforce data)
+data/
 *.csv
 *.xlsx
 *.tsv
