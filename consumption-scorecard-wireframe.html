@@ -662,30 +662,66 @@
                 <div class="filters-title">📊 Dashboard Filters</div>
                 <div class="filters-grid">
                     <div class="filter-group">
-                        <label class="filter-label">Account Name</label>
-                        <input type="text" class="filter-select" placeholder="Search accounts..." style="cursor: text;">
-                    </div>
-                    <div class="filter-group">
-                        <label class="filter-label">Organization Unit</label>
+                        <label class="filter-label">Manager Level 1</label>
                         <select class="filter-select">
-                            <option>Global</option>
-                            <option>AMER</option>
-                            <option>EMEA</option>
-                            <option>LATAM</option>
-                            <option>APAC</option>
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label class="filter-label">Leader Level</label>
+                        <label class="filter-label">Manager Level 2</label>
                         <select class="filter-select">
-                            <option>All Levels</option>
-                            <option>L7</option>
-                            <option>L6</option>
-                            <option>L5</option>
-                            <option>L4</option>
-                            <option>L3</option>
-                            <option>L2</option>
-                            <option>L1</option>
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Level 3</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Level 4</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Level 5</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Level 6</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Level 7</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -710,6 +746,7 @@
                         <label class="filter-label">Consumption Cohort</label>
                         <select class="filter-select">
                             <option>All Cohorts</option>
+                            <option>No Consumption</option>
                             <option>Under Consuming</option>
                             <option>Consuming</option>
                             <option>Consuming Well</option>
@@ -726,12 +763,16 @@
                         </select>
                     </div>
                     <div class="filter-group">
+                        <label class="filter-label">Account Name</label>
+                        <input type="text" class="filter-select" placeholder="Search accounts..." style="cursor: text;">
+                    </div>
+                    <div class="filter-group">
                         <label class="filter-label">Time Period</label>
                         <select class="filter-select">
-                            <option>Week-over-Week</option>
-                            <option>Month-over-Month</option>
-                            <option>Quarter-on-Quarter</option>
-                            <option>Year-to-Date</option>
+                            <option>Quarterly</option>
+                            <option>Monthly</option>
+                            <option>Weekly</option>
+                            <option>Fiscal Year to Date</option>
                         </select>
                     </div>
                 </div>
@@ -769,10 +810,17 @@
                         </div>
                     </div>
                     <div class="metric-card">
-                        <div class="metric-label">Total AOV</div>
+                        <div class="metric-label">Total ACV</div>
                         <div class="metric-value">$1.13B</div>
                         <div class="metric-change positive">
                             ↑ +$45M Q/Q
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Pipe Gen</div>
+                        <div class="metric-value">$892M</div>
+                        <div class="metric-change positive">
+                            ↑ +$124M Q/Q
                         </div>
                     </div>
                     <div class="metric-card">
@@ -853,20 +901,25 @@
                 <div style="margin-top: 30px;">
                     <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Consumption Cohorts</h3>
                     <div class="cohort-pills">
+                        <div class="cohort-pill" style="background: #f5f5f5; border-color: #9ca3af; color: #374151;">
+                            <div class="cohort-name">No Consumption</div>
+                            <div class="cohort-value">892</div>
+                            <div class="cohort-percent">7.1% of accounts</div>
+                        </div>
                         <div class="cohort-pill under-consuming">
                             <div class="cohort-name">Under Consuming</div>
                             <div class="cohort-value">1,406</div>
-                            <div class="cohort-percent">94.3% of accounts</div>
+                            <div class="cohort-percent">11.2% of accounts</div>
                         </div>
                         <div class="cohort-pill consuming">
                             <div class="cohort-name">Consuming</div>
-                            <div class="cohort-value">42</div>
-                            <div class="cohort-percent">2.8% of accounts</div>
+                            <div class="cohort-value">8,124</div>
+                            <div class="cohort-percent">65.0% of accounts</div>
                         </div>
                         <div class="cohort-pill consuming-well">
                             <div class="cohort-name">Consuming Well</div>
-                            <div class="cohort-value">43</div>
-                            <div class="cohort-percent">2.9% of accounts</div>
+                            <div class="cohort-value">2,085</div>
+                            <div class="cohort-percent">16.7% of accounts</div>
                         </div>
                     </div>
                 </div>
