@@ -653,7 +653,7 @@
         <header>
             <h1>🎯 Consumption Scorecard Dashboard</h1>
             <p class="subtitle">Single Source of Truth for Agent Force & Data Cloud Consumption</p>
-            <span class="badge">WIREFRAME - MVP v1.0</span>
+            <span class="badge">WIREFRAME - MVP v2.0</span>
         </header>
 
         <div class="main-content">
@@ -662,6 +662,10 @@
                 <div class="filters-title">📊 Dashboard Filters</div>
                 <div class="filters-grid">
                     <div class="filter-group">
+                        <label class="filter-label">Account Name</label>
+                        <input type="text" class="filter-select" placeholder="Search accounts..." style="cursor: text;">
+                    </div>
+                    <div class="filter-group">
                         <label class="filter-label">Organization Unit</label>
                         <select class="filter-select">
                             <option>Global</option>
@@ -669,6 +673,19 @@
                             <option>EMEA</option>
                             <option>LATAM</option>
                             <option>APAC</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Leader Level</label>
+                        <select class="filter-select">
+                            <option>All Levels</option>
+                            <option>L7</option>
+                            <option>L6</option>
+                            <option>L5</option>
+                            <option>L4</option>
+                            <option>L3</option>
+                            <option>L2</option>
+                            <option>L1</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -711,9 +728,10 @@
                     <div class="filter-group">
                         <label class="filter-label">Time Period</label>
                         <select class="filter-select">
-                            <option>Current Quarter</option>
-                            <option>Prior Quarter</option>
-                            <option>Q/Q Comparison</option>
+                            <option>Week-over-Week</option>
+                            <option>Month-over-Month</option>
+                            <option>Quarter-on-Quarter</option>
+                            <option>Year-to-Date</option>
                         </select>
                     </div>
                 </div>
@@ -732,6 +750,14 @@
                         <button class="btn">Export CSV</button>
                         <button class="btn btn-primary">Refresh Data</button>
                     </div>
+                </div>
+
+                <!-- Paid Customers Disclaimer -->
+                <div style="background: #eff8ff; border: 1px solid #b2ddff; border-radius: 8px; padding: 12px 16px; margin-bottom: 24px; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 16px;">ℹ️</span>
+                    <span style="font-size: 13px; color: #175cd3; font-weight: 500;">
+                        <strong>Paid customers only</strong> (AOV > $0). CRR excludes PGO and pre-commit accounts.
+                    </span>
                 </div>
 
                 <div class="metrics-grid">
@@ -765,28 +791,60 @@
                     </div>
                 </div>
 
+                <!-- Stuck Accounts Metrics -->
+                <div style="margin-top: 30px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Accounts Requiring Attention</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div style="padding: 20px; background: #fffaeb; border: 2px solid #fedf89; border-radius: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span style="font-size: 18px;">⚠️</span>
+                                <span style="font-size: 13px; font-weight: 600; color: #b54708;">Agent Force: Stuck in Stage (>90 days)</span>
+                            </div>
+                            <div style="font-size: 28px; font-weight: 700; color: #b54708;">342 accounts</div>
+                            <div style="font-size: 12px; color: #93370d; margin-top: 4px;">Require proactive engagement</div>
+                        </div>
+                        <div style="padding: 20px; background: #fef3f2; border: 2px solid #fda29b; border-radius: 8px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span style="font-size: 18px;">🚨</span>
+                                <span style="font-size: 13px; font-weight: 600; color: #b42318;">Data Cloud: No Production Usage (6-12 months)</span>
+                            </div>
+                            <div style="font-size: 28px; font-weight: 700; color: #b42318;">156 accounts</div>
+                            <div style="font-size: 12px; color: #912018; margin-top: 4px;">At risk - no NCR generated</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div style="margin-top: 30px;">
                     <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Product Breakdown</h3>
                     <div class="metrics-grid">
                         <div class="metric-card">
-                            <div class="metric-label">Flex Credits - Allowance</div>
-                            <div class="metric-value">81.7B</div>
+                            <div class="metric-label">Flex Credits - Used</div>
+                            <div class="metric-value">458M</div>
+                            <div style="font-size: 14px; font-weight: 600; color: var(--sf-blue); margin-top: 4px;">
+                                CRR: 3.1%
+                            </div>
                             <div style="font-size: 12px; color: var(--gray-500); margin-top: 4px;">
-                                Used: 458M (0.6%) | CRR: 3.1%
+                                Allowance: 81.7B
                             </div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-label">Conversations - Allowance</div>
-                            <div class="metric-value">720M</div>
+                            <div class="metric-label">Conversations - Used</div>
+                            <div class="metric-value">5.71M</div>
+                            <div style="font-size: 14px; font-weight: 600; color: var(--sf-blue); margin-top: 4px;">
+                                CRR: 4%
+                            </div>
                             <div style="font-size: 12px; color: var(--gray-500); margin-top: 4px;">
-                                Used: 5.71M (0.8%) | CRR: 4%
+                                Allowance: 720M
                             </div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-label">Data Service Credits</div>
-                            <div class="metric-value">1.78T</div>
+                            <div class="metric-label">Data Service Credits - Used</div>
+                            <div class="metric-value">208B</div>
+                            <div style="font-size: 14px; font-weight: 600; color: var(--sf-blue); margin-top: 4px;">
+                                CRR: 45%
+                            </div>
                             <div style="font-size: 12px; color: var(--gray-500); margin-top: 4px;">
-                                Used: 208B (12%) | CRR: 45%
+                                Allowance: 1.78T
                             </div>
                         </div>
                     </div>
@@ -846,18 +904,6 @@
                                 <span class="stage-count">890 accounts (12%)</span>
                             </div>
                         </div>
-
-                        <div style="margin-top: 24px; padding: 16px; background: white; border-radius: 8px; border: 1px solid var(--gray-200);">
-                            <div style="font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 8px;">
-                                ⚠️ Accounts Stuck in Stage (>90 days)
-                            </div>
-                            <div style="font-size: 24px; font-weight: 700; color: var(--sf-orange);">
-                                342 accounts
-                            </div>
-                            <div style="font-size: 12px; color: var(--gray-500); margin-top: 4px;">
-                                Require proactive engagement
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Data Cloud Adoption -->
@@ -889,117 +935,36 @@
                                 <span class="stage-count">285 accounts (32%)</span>
                             </div>
                         </div>
-
-                        <div style="margin-top: 24px; padding: 16px; background: white; border-radius: 8px; border: 1px solid var(--gray-200);">
-                            <div style="font-size: 13px; font-weight: 600; color: var(--gray-700); margin-bottom: 8px;">
-                                💡 Avg DSC Consumption Rate
-                            </div>
-                            <div style="font-size: 24px; font-weight: 700; color: var(--sf-teal);">
-                                45% CRR
-                            </div>
-                            <div style="font-size: 12px; color: var(--gray-500); margin-top: 4px;">
-                                Best performing product
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- CONSUMPTION DETAIL VIEW & RESOURCE ENGAGEMENT VIEW (Split) -->
+            <!-- RESOURCE, IMPLEMENTATION & ESTIMATION SUMMARY (Combined Unified Section) -->
             <section class="dashboard-section">
-                <div class="split-layout">
-                    <!-- Consumption Detail -->
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        Resource, Implementation & Estimation Summary
+                    </h2>
+                </div>
+
+                <!-- Combined Summary Cards Row -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                    <!-- Resource Engagement Cards -->
                     <div>
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                                </svg>
-                                Consumption Detail
-                            </h2>
-                        </div>
-
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Account</th>
-                                    <th>Product</th>
-                                    <th>Allowance</th>
-                                    <th>Used</th>
-                                    <th>CRR</th>
-                                    <th>Cohort</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="font-weight: 600;">Acme Corp</td>
-                                    <td>Flex Credits</td>
-                                    <td>50M</td>
-                                    <td>42M</td>
-                                    <td style="color: var(--sf-green); font-weight: 600;">84%</td>
-                                    <td><span class="status-badge active">Consuming Well</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="font-weight: 600;">Globex Inc</td>
-                                    <td>Conversations</td>
-                                    <td>100K</td>
-                                    <td>15K</td>
-                                    <td style="color: var(--sf-red); font-weight: 600;">15%</td>
-                                    <td><span class="status-badge" style="background: #fef3f2; color: #b42318;">Under Consuming</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="font-weight: 600;">Initech Ltd</td>
-                                    <td>DSC</td>
-                                    <td>2.5B</td>
-                                    <td>1.2B</td>
-                                    <td style="color: var(--sf-orange); font-weight: 600;">48%</td>
-                                    <td><span class="status-badge scheduled">Consuming</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="font-weight: 600;">Umbrella Co</td>
-                                    <td>Flex Credits</td>
-                                    <td>200M</td>
-                                    <td>180M</td>
-                                    <td style="color: var(--sf-green); font-weight: 600;">90%</td>
-                                    <td><span class="status-badge active">Consuming Well</span></td>
-                                </tr>
-                                <tr>
-                                    <td style="font-weight: 600;">Stark Industries</td>
-                                    <td>DSC</td>
-                                    <td>5B</td>
-                                    <td>850M</td>
-                                    <td style="color: var(--sf-red); font-weight: 600;">17%</td>
-                                    <td><span class="status-badge" style="background: #fef3f2; color: #b42318;">Under Consuming</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div style="margin-top: 16px; text-align: center;">
-                            <button class="btn">Load More Accounts</button>
-                        </div>
-                    </div>
-
-                    <!-- Resource Engagement -->
-                    <div>
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                                Resource Engagement
-                            </h2>
-                        </div>
-
+                        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Resource Engagement</h4>
                         <div class="resource-icons">
                             <div class="resource-card">
                                 <div class="resource-card-icon">FDE</div>
-                                <div class="resource-card-name">Fast Deploy Engineers</div>
+                                <div class="resource-card-name">Forward Deployed Engineers</div>
                                 <div class="resource-card-count">342</div>
                                 <div style="font-size: 11px; color: var(--gray-500); margin-top: 4px;">accounts covered</div>
                             </div>
                             <div class="resource-card">
                                 <div class="resource-card-icon" style="background: var(--sf-teal);">CL</div>
-                                <div class="resource-card-name">Customer Lift</div>
+                                <div class="resource-card-name">Consumption Leads</div>
                                 <div class="resource-card-count">909</div>
                                 <div style="font-size: 11px; color: var(--gray-500); margin-top: 4px;">accounts covered</div>
                             </div>
@@ -1010,116 +975,39 @@
                                 <div style="font-size: 11px; color: var(--gray-500); margin-top: 4px;">accounts covered</div>
                             </div>
                         </div>
-
-                        <div style="margin-top: 24px; padding: 20px; background: var(--gray-50); border-radius: 8px;">
-                            <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Impact Analysis</h4>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
-                                <span style="font-size: 13px; color: var(--gray-600);">Accounts with Resources</span>
-                                <span style="font-size: 14px; font-weight: 600; color: var(--sf-green);">CRR: 62%</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <span style="font-size: 13px; color: var(--gray-600);">Accounts without Resources</span>
-                                <span style="font-size: 14px; font-weight: 600; color: var(--sf-red);">CRR: 18%</span>
-                            </div>
-                        </div>
-
-                        <table class="data-table" style="margin-top: 20px;">
-                            <thead>
-                                <tr>
-                                    <th>Account</th>
-                                    <th>Resource</th>
-                                    <th>Status</th>
-                                    <th>Days</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="font-weight: 600;">Acme Corp</td>
-                                    <td>FDE</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>45</td>
-                                </tr>
-                                <tr>
-                                    <td style="font-weight: 600;">Globex Inc</td>
-                                    <td>CL</td>
-                                    <td><span class="status-badge scheduled">Scheduled</span></td>
-                                    <td>-</td>
-                                </tr>
-                                <tr>
-                                    <td style="font-weight: 600;">Initech Ltd</td>
-                                    <td>Cloud Success</td>
-                                    <td><span class="status-badge completed">Completed</span></td>
-                                    <td>120</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
-                </div>
-            </section>
 
-            <!-- IMPLEMENTATION TYPE & ESTIMATION INTEGRATION (Split) -->
-            <section class="dashboard-section" style="background: var(--gray-50);">
-                <div class="split-layout">
-                    <!-- Implementation Type Analysis -->
+                    <!-- Implementation Type Cards -->
                     <div>
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                </svg>
-                                Implementation Type Analysis
-                            </h2>
-                        </div>
-
-                        <div class="implementation-cards">
+                        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Implementation Type</h4>
+                        <div class="implementation-cards" style="grid-template-columns: repeat(3, 1fr);">
                             <div class="impl-card">
                                 <div class="impl-card-title">Partner-Led</div>
                                 <div class="impl-card-metric">45%</div>
                                 <div class="impl-card-label">Avg CRR</div>
-                                <div style="margin-top: 12px; font-size: 13px; color: var(--gray-600);">
-                                    2,834 accounts
-                                </div>
+                                <div style="margin-top: 8px; font-size: 12px; color: var(--gray-600);">2,834 accounts</div>
                             </div>
                             <div class="impl-card">
                                 <div class="impl-card-title">ProServe</div>
                                 <div class="impl-card-metric">68%</div>
                                 <div class="impl-card-label">Avg CRR</div>
-                                <div style="margin-top: 12px; font-size: 13px; color: var(--gray-600);">
-                                    1,245 accounts
-                                </div>
+                                <div style="margin-top: 8px; font-size: 12px; color: var(--gray-600);">1,245 accounts</div>
                             </div>
                             <div class="impl-card">
                                 <div class="impl-card-title">Self/DIY</div>
                                 <div class="impl-card-metric">22%</div>
                                 <div class="impl-card-label">Avg CRR</div>
-                                <div style="margin-top: 12px; font-size: 13px; color: var(--gray-600);">
-                                    3,300 accounts
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 24px;">
-                            <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--gray-700);">Success Metrics by Type</h4>
-                            <div class="chart-container" style="min-height: 200px;">
-                                <svg class="chart-placeholder-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                                <div class="chart-placeholder-text">Comparison Chart: Time to Consistent Usage</div>
+                                <div style="margin-top: 8px; font-size: 12px; color: var(--gray-600);">3,300 accounts</div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Estimation Integration -->
+                <!-- Estimation Flow & Impact Analysis Row -->
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 30px;">
+                    <!-- Estimation Flow -->
                     <div>
-                        <div class="section-header">
-                            <h2 class="section-title">
-                                <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                </svg>
-                                Estimation Integration
-                            </h2>
-                        </div>
-
+                        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Estimation Journey</h4>
                         <div class="estimation-flow">
                             <div class="flow-step">
                                 <div class="flow-step-icon">1</div>
@@ -1142,51 +1030,171 @@
                                 <div class="flow-step-value">342M</div>
                             </div>
                         </div>
+                    </div>
 
-                        <div style="margin-top: 24px; padding: 20px; background: white; border-radius: 8px; border: 1px solid var(--gray-200);">
-                            <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Variance Analysis</h4>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                                <div>
-                                    <div style="font-size: 12px; color: var(--gray-500); margin-bottom: 4px;">Estimate vs Contract</div>
-                                    <div style="font-size: 20px; font-weight: 700; color: var(--sf-orange);">-10%</div>
+                    <!-- Impact & Variance Analysis -->
+                    <div>
+                        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Impact & Variance Analysis</h4>
+                        <div style="padding: 20px; background: var(--gray-50); border-radius: 8px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                <span style="font-size: 13px; color: var(--gray-600);">With Resources CRR</span>
+                                <span style="font-size: 14px; font-weight: 600; color: var(--sf-green);">62%</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                <span style="font-size: 13px; color: var(--gray-600);">Without Resources CRR</span>
+                                <span style="font-size: 14px; font-weight: 600; color: var(--sf-red);">18%</span>
+                            </div>
+                            <div style="border-top: 1px solid var(--gray-200); padding-top: 12px; margin-top: 12px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-size: 12px; color: var(--gray-500);">Estimate vs Contract</span>
+                                    <span style="font-size: 14px; font-weight: 600; color: var(--sf-orange);">-10%</span>
                                 </div>
-                                <div>
-                                    <div style="font-size: 12px; color: var(--gray-500); margin-bottom: 4px;">Contract vs Usage</div>
-                                    <div style="font-size: 20px; font-weight: 700; color: var(--sf-red);">-24%</div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="font-size: 12px; color: var(--gray-500);">Contract vs Usage</span>
+                                    <span style="font-size: 14px; font-weight: 600; color: var(--sf-red);">-24%</span>
                                 </div>
                             </div>
                         </div>
-
-                        <div style="margin-top: 24px;">
-                            <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--gray-700);">Time to Value Metrics</h4>
-                            <table class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Metric</th>
-                                        <th>Average</th>
-                                        <th>Best Practice</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Time to First Use</td>
-                                        <td>45 days</td>
-                                        <td style="color: var(--sf-green);">< 30 days</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Time to 25% CRR</td>
-                                        <td>90 days</td>
-                                        <td style="color: var(--sf-green);">< 60 days</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Time to Consistent Use</td>
-                                        <td>120 days</td>
-                                        <td style="color: var(--sf-green);">< 90 days</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- CONSUMPTION DETAIL VIEW (Full Width) -->
+            <section class="dashboard-section" style="background: var(--gray-50);">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                        Consumption Detail
+                    </h2>
+                    <div class="section-actions">
+                        <button class="btn">Export CSV</button>
+                        <button class="btn btn-primary">Load More Accounts</button>
+                    </div>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Product</th>
+                                <th>Allowance</th>
+                                <th>Used</th>
+                                <th>CRR</th>
+                                <th>Cohort</th>
+                                <th>Impl Type</th>
+                                <th>Resource</th>
+                                <th>Estimated</th>
+                                <th>Contracted</th>
+                                <th>Agents Created</th>
+                                <th>Agents Activated</th>
+                                <th>Agents in Use</th>
+                                <th>DSC Usage ($)</th>
+                                <th>DSC Allowance</th>
+                                <th>Einstein Req Usage</th>
+                                <th>Einstein Req Allowance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 600;">Acme Corp</td>
+                                <td>Flex Credits</td>
+                                <td>50M</td>
+                                <td>42M</td>
+                                <td style="color: var(--sf-green); font-weight: 600;">84%</td>
+                                <td><span class="status-badge active">Consuming Well</span></td>
+                                <td>Partner-Led</td>
+                                <td>FDE</td>
+                                <td>55M</td>
+                                <td>50M</td>
+                                <td>12</td>
+                                <td>8</td>
+                                <td>6</td>
+                                <td>$125K</td>
+                                <td>2.5B</td>
+                                <td>45K</td>
+                                <td>100K</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Globex Inc</td>
+                                <td>Conversations</td>
+                                <td>100K</td>
+                                <td>15K</td>
+                                <td style="color: var(--sf-red); font-weight: 600;">15%</td>
+                                <td><span class="status-badge" style="background: #fef3f2; color: #b42318;">Under Consuming</span></td>
+                                <td>Self/DIY</td>
+                                <td>-</td>
+                                <td>80K</td>
+                                <td>100K</td>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>$8K</td>
+                                <td>500M</td>
+                                <td>2K</td>
+                                <td>50K</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Initech Ltd</td>
+                                <td>DSC</td>
+                                <td>2.5B</td>
+                                <td>1.2B</td>
+                                <td style="color: var(--sf-orange); font-weight: 600;">48%</td>
+                                <td><span class="status-badge scheduled">Consuming</span></td>
+                                <td>ProServe</td>
+                                <td>CL</td>
+                                <td>3B</td>
+                                <td>2.5B</td>
+                                <td>8</td>
+                                <td>5</td>
+                                <td>4</td>
+                                <td>$450K</td>
+                                <td>5B</td>
+                                <td>28K</td>
+                                <td>75K</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Umbrella Co</td>
+                                <td>Flex Credits</td>
+                                <td>200M</td>
+                                <td>180M</td>
+                                <td style="color: var(--sf-green); font-weight: 600;">90%</td>
+                                <td><span class="status-badge active">Consuming Well</span></td>
+                                <td>Partner-Led</td>
+                                <td>CS</td>
+                                <td>180M</td>
+                                <td>200M</td>
+                                <td>25</td>
+                                <td>22</td>
+                                <td>18</td>
+                                <td>$890K</td>
+                                <td>10B</td>
+                                <td>95K</td>
+                                <td>150K</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Stark Industries</td>
+                                <td>DSC</td>
+                                <td>5B</td>
+                                <td>850M</td>
+                                <td style="color: var(--sf-red); font-weight: 600;">17%</td>
+                                <td><span class="status-badge" style="background: #fef3f2; color: #b42318;">Under Consuming</span></td>
+                                <td>Self/DIY</td>
+                                <td>-</td>
+                                <td>8B</td>
+                                <td>5B</td>
+                                <td>5</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>$180K</td>
+                                <td>8B</td>
+                                <td>12K</td>
+                                <td>200K</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
         </div>
@@ -1194,8 +1202,8 @@
         <!-- Footer -->
         <footer>
             <p>
-                <strong>Consumption Scorecard Dashboard</strong> - Wireframe Prototype v1.0 | 
-                Data refreshed: January 19, 2026 | 
+                <strong>Consumption Scorecard Dashboard</strong> - Wireframe Prototype v2.0 | 
+                Data refreshed: January 22, 2026 | 
                 <a href="#">View Full PRD</a> | 
                 <a href="#">Provide Feedback</a>
             </p>
