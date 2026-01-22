@@ -124,6 +124,13 @@
             gap: 16px;
         }
 
+        .manager-levels-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
         .filter-group {
             display: flex;
             flex-direction: column;
@@ -644,6 +651,16 @@
             .implementation-cards {
                 grid-template-columns: 1fr;
             }
+
+            .manager-levels-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .manager-levels-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -660,70 +677,74 @@
             <!-- FILTERS SECTION -->
             <section class="filters-section">
                 <div class="filters-title">📊 Dashboard Filters</div>
+                <!-- Manager Levels Row -->
+                <div class="manager-levels-grid">
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Lvl 1</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Lvl 2</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Lvl 3</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Lvl 4</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Lvl 5</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Lvl 6</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Manager Lvl 7</label>
+                        <select class="filter-select">
+                            <option>All</option>
+                            <option>Manager A</option>
+                            <option>Manager B</option>
+                            <option>Manager C</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Other Filters -->
                 <div class="filters-grid">
-                    <div class="filter-group">
-                        <label class="filter-label">Manager Level 1</label>
-                        <select class="filter-select">
-                            <option>All</option>
-                            <option>Manager A</option>
-                            <option>Manager B</option>
-                            <option>Manager C</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label class="filter-label">Manager Level 2</label>
-                        <select class="filter-select">
-                            <option>All</option>
-                            <option>Manager A</option>
-                            <option>Manager B</option>
-                            <option>Manager C</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label class="filter-label">Manager Level 3</label>
-                        <select class="filter-select">
-                            <option>All</option>
-                            <option>Manager A</option>
-                            <option>Manager B</option>
-                            <option>Manager C</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label class="filter-label">Manager Level 4</label>
-                        <select class="filter-select">
-                            <option>All</option>
-                            <option>Manager A</option>
-                            <option>Manager B</option>
-                            <option>Manager C</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label class="filter-label">Manager Level 5</label>
-                        <select class="filter-select">
-                            <option>All</option>
-                            <option>Manager A</option>
-                            <option>Manager B</option>
-                            <option>Manager C</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label class="filter-label">Manager Level 6</label>
-                        <select class="filter-select">
-                            <option>All</option>
-                            <option>Manager A</option>
-                            <option>Manager B</option>
-                            <option>Manager C</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label class="filter-label">Manager Level 7</label>
-                        <select class="filter-select">
-                            <option>All</option>
-                            <option>Manager A</option>
-                            <option>Manager B</option>
-                            <option>Manager C</option>
-                        </select>
-                    </div>
                     <div class="filter-group">
                         <label class="filter-label">Product</label>
                         <select class="filter-select">
