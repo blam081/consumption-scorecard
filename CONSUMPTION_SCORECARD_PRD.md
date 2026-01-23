@@ -1,8 +1,8 @@
 # Product Requirements Document (PRD)
 ## Consumption Scorecard - Single Source of Truth
 
-**Document Version:** 1.0  
-**Last Updated:** January 19, 2026  
+**Document Version:** 2.0  
+**Last Updated:** January 22, 2026  
 **Author:** Brandon Lam  
 **Stakeholders:** Srivatsan Vasudevan, Jonathan Norton, Deb Friedler, Derek Piotrowski, Shameem Syedmohamed, Catherine Blair
 
@@ -71,10 +71,8 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 ### 2.3 Non-Goals (Out of Scope for MVP)
 
 - ❌ Building forecasting/planning tools (separate effort)
-- ❌ Workflow automation or alerting (phase 2)
-- ❌ Integration with consumption plan object (future phase)
-- ❌ Historical trend analysis beyond quarterly comparisons (phase 2)
-- ❌ Custom territory mapping (use existing hierarchy)
+- ❌ Workflow automation or alerting 
+- ❌ Historical trend analysis beyond quarterly comparisons and YTD
 
 ---
 
@@ -108,14 +106,16 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 **Actor:** OU Leader (e.g., Mark Sullivan for ICE)  
 **Goal:** Conduct weekly portfolio review  
 **Flow:**
-1. Open dashboard and filter to ICE organization
-2. View aggregate metrics: Total AOV, NCR, ATR, consumption rates
-3. Drill into Agent Force adoption funnel by AOV band
-4. Identify under-consuming accounts
-5. Review resource allocation (CL, FDE, Cloud Success coverage)
-6. Export key insights for team discussion
+1. Open dashboard (RLS automatically filters to ICE organization accounts)
+2. View aggregate metrics: Total ACV, Total Pipe Gen, NCR, Avg CRR
+3. Review "Accounts Requiring Attention" section (AF stuck accounts, DC accounts without production usage)
+4. Drill into Agent Force adoption funnel by AOV band
+5. Identify under-consuming accounts using Consumption Cohorts
+6. Review resource allocation summary (CL, FDE, Cloud Success coverage)
+7. Export key insights for team discussion
 
-**Current Pain:** Takes 2-3 hours to manually compile this data from multiple sources
+**Current Pain:** Takes 2-3 hours to manually compile this data from multiple sources  
+**RLS Benefit:** Dashboard automatically shows only ICE accounts - no manual filtering required
 
 #### Use Case 2: Under-Consumption Intervention
 **Actor:** Account Executive  
@@ -165,30 +165,39 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 **Components:**
 - **Aggregate Metrics Cards:**
   - Total Number of Accounts with AF/DC
-  - Total AOV, ACV, Open Pipeline, Pipe Gen
+  - Total ACV (Annual Contract Value)
+  - Total Pipe Gen (Pipeline Generation)
   - NCR (Net Consumption Rate)
-  - ATR (Available to Renew)
-  - CRR (Consumption Run Rate)
+  - Avg CRR (Consumption Run Rate)
+  - Quarter-over-Quarter change indicators for all metrics
 
-- **Product Breakdown:**
-  - Flex Credits: Allowance, Projected Use, Actual Usage, Utilization %, CRR %
-  - Conversations: Allowance, Projected Use, Actual Usage, Utilization %, CRR %
-  - Data Service Credits: Allowance, Projected Use, Actual Usage, Utilization %, CRR %
+- **Accounts Requiring Attention:**
+  - Agent Force: Accounts Stuck in Stage (>90 days) - count and percentage
+  - Data Cloud: Accounts without Production Usage (6-12 months) - count and percentage
+
+- **Product Breakdown (Used-First Display):**
+  - Flex Credits: **Used** (primary metric), CRR %, Allowance (secondary)
+  - Conversations: **Used** (primary metric), CRR %, Allowance (secondary)
+  - Data Service Credits: **Used** (primary metric), CRR %, Allowance (secondary)
+  - *Note: Display emphasizes actual usage over allowance to highlight consumption*
 
 - **Consumption Cohorts:**
+  - No Consumption: number of accounts, % of total
   - Under Consuming (CRR < 25%): number of accounts, % of total
   - Consuming (CRR 25-70%): number of accounts, % of total
   - Consuming Well (CRR > 70%): number of accounts, % of total
 
-- **Quarter-over-Quarter Changes:**
-  - Usage change indicators
-  - Account movement between cohorts
+- **Data Disclaimer:**
+  - Visible note: "Paid customers only (AOV > $0). CRR excludes PGO and pre-commit accounts."
 
 **Filters:**
-- Organization Unit (Global, AMER, EMEA, LATAM, APAC, etc.)
+- Manager Level 1-7 (seven separate filters for hierarchical filtering)
+- Product (All Products, Agent Force, Data Cloud)
 - AOV Band (<$100K, $100K-$500K, $500K-$1M, >$1M)
-- Product (Agent Force, Data Cloud, Both)
-- Support Level (Premier, Signature, Standard)
+- Consumption Cohort (All Cohorts, No Consumption, Under Consuming, Consuming, Consuming Well)
+- Resource Engagement (All, Has FDE, Has CL, Has Cloud Success, No Resource)
+- Account Name (search input)
+- Time Period (Quarterly, Monthly, Weekly, Fiscal Year to Date)
 
 **Reference:** See `AFDC_Scorecard_AFDC_Summary_.csv` and `AFDC_Scorecard_Consumption_Summary_.csv`
 
@@ -249,78 +258,77 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 ---
 
 #### 4.1.4 Consumption Detail View
-**Purpose:** Detailed consumption metrics by account
+**Purpose:** Detailed consumption metrics by account in a comprehensive table view
 
-**Table Columns:**
+**Table Columns (Full Width Layout):**
 - Account Name & ID
-- Account Owner
-- OU / Sub-OU
-- AOV, ACV, Pipeline
-- Support Level
-
-**For Each Product (Flex Credits, Conversations, Data Service Credits):**
+- Product (Flex Credits, Conversations, Data Service Credits)
 - Allowance (total purchased)
-- Contract Start & End Dates
-- Time Elapsed %
-- Projected Usage (based on time elapsed)
-- Actual Usage to Date
-- Remaining Allowance
-- Utilization % (Used / Allowance)
-- CRR % (Actual / Projected)
-- Consumption Cohort (Under/Consuming/Well)
-- Q/Q Change in usage
-- NCR ($)
+- Used (actual consumption)
+- CRR % (Consumption Run Rate)
+- Cohort (No Consumption, Under Consuming, Consuming, Consuming Well)
+- Implementation Type (Partner-Led, ProServe, Self/DIY)
+- Resource Engagement (FDE, CL, Cloud Success, None)
+- Estimated (estimated consumption from sales cycle)
+- Contracted (contracted allowance)
+- Agents Created (number of agents created for account)
+- Agents Activated (number of agents activated)
+- Agents in Use (number of agents actively in use per account)
+- DSC Usage ($) (Data Service Credit usage amount in dollars)
+- DSC Allowance (Data Service Credit allowance)
+- Einstein Request Usage (Einstein request consumption)
+- Einstein Request Allowance (Einstein request entitlement)
 
 **Actions:**
 - Export to CSV
-- Drill into account details
-- View historical usage trend
+- Load More Accounts (pagination)
+- Filter by any column
+- Sort by any metric
 
 **Reference:** See `AFDC_Scorecard_AF_Scorecard.csv`, `AFDC_Scorecard_Consumption_Data.csv`
 
 ---
 
-#### 4.1.5 Resource Engagement View
-**Purpose:** Track engagement of specialized resources
+#### 4.1.5 Resource, Implementation & Estimation Summary (Unified View)
+**Purpose:** Consolidated view of resource engagement, implementation approach, and estimation data
 
-**Resource Types:**
-- **FDE (Fast Deploy Engineers):** 12-week engagement sprints
-- **CL (Customer Lift):** Specialist engagements
-- **Cloud Success:** Workshops, coaching, activation support
+**Layout:** Single unified section positioned above Consumption Detail table
 
-**Metrics:**
-- Number of accounts covered per resource type
-- AOV covered
-- Engagement status (Active, Scheduled, Completed)
-- Days in engagement
-- Consumption metrics for engaged vs. non-engaged accounts
+**Resource Engagement Summary:**
+- **Resource Types:**
+  - **FDE (Forward Deployed Engineers):** 12-week engagement sprints
+  - **CL (Consumption Leads):** Specialist engagements
+  - **Cloud Success:** Workshops, coaching, activation support
+- **Aggregate Metrics:**
+  - Number of accounts covered per resource type
+  - Impact Analysis: CRR comparison (accounts with resources vs. without resources)
 
-**Comparison:**
-- CRR for accounts with FDE engagement vs. without
-- Adoption funnel progression rates by resource type
+**Implementation Type Summary:**
+- **Implementation Types:**
+  - Partner-Led
+  - Professional Services (ProServe)
+  - Self-implemented (DIY)
+- **Metrics by Type:**
+  - Number of accounts
+  - Average CRR
+  - Visual comparison cards
+
+**Estimation Journey:**
+- **Flow Visualization:**
+  1. Estimated (from sales cycle)
+  2. Contracted (actual contract allowance)
+  3. Implementation (time to implementation)
+  4. Used (actual consumption)
+- **Variance Analysis:**
+  - Estimate vs Contract variance
+  - Contract vs Usage variance
+- **Time to Value Metrics:**
+  - Time to First Use
+  - Time to 25% CRR
+  - Time to Consistent Use
+  - Best practice benchmarks
 
 **Reference:** See `AFDC_Scorecard_AF_Cloud_Success_Engagement.csv`, `AFDC_Scorecard_DC_Cloud_Success_Engagement.csv`
-
----
-
-#### 4.1.6 Implementation Type Analysis
-**Purpose:** Compare adoption and consumption by implementation approach
-
-**Implementation Types:**
-- Partner-led
-- Professional Services (ProServe)
-- Self-implemented (DIY)
-
-**Metrics by Type:**
-- Number of accounts
-- Average CRR
-- Funnel conversion rates
-- Time to consistent usage
-- Success rates
-
-**Visual:** Side-by-side comparison charts
-
-**Reference:** See adoption funnel data with implementation type dimension
 
 ---
 
@@ -352,50 +360,93 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 ### 4.3 Filtering & Personalization
 
 **Global Filters (Apply to All Views):**
-- **Organization Hierarchy:**
-  - Global / OU / Sub-OU / Team
-  - Support persona-based filtering (view as: specific user, role)
-  
+
+**Primary Filters (Manager Levels - 7 Filters):**
+- Manager Level 1 (dropdown)
+- Manager Level 2 (dropdown)
+- Manager Level 3 (dropdown)
+- Manager Level 4 (dropdown)
+- Manager Level 5 (dropdown)
+- Manager Level 6 (dropdown)
+- Manager Level 7 (dropdown)
+- *Note: All seven manager level filters displayed on one row for hierarchical filtering*
+
+**Secondary Filters:**
 - **Product:**
+  - All Products
   - Agent Force Only
   - Data Cloud Only
-  - Both
-- **Time Period:**
-  - Current Quarter (default)
-  - Prior Quarter
-  - Quarter-over-Quarter comparison
-  - Custom date range
 
-- **Account Attributes:**
-  - AOV Bands
-  - Support Level
-  - Industry/Segment
-  - Geography
+- **AOV Band:**
+  - All Sizes
+  - < $100K
+  - $100K - $500K
+  - $500K - $1M
+  - > $1M
 
 - **Consumption Cohort:**
+  - All Cohorts
+  - No Consumption
   - Under Consuming
   - Consuming
   - Consuming Well
 
 - **Resource Engagement:**
+  - All
   - Has FDE
   - Has CL
   - Has Cloud Success
-  - No Resource Engagement
+  - No Resource
 
-- **Adoption Stage:**
-  - By Agent Force funnel stage
-  - By Data Cloud adoption stage
+- **Account Name:**
+  - Search input field for account name lookup
+
+- **Time Period:**
+  - Quarterly
+  - Monthly
+  - Weekly
+  - Fiscal Year to Date
 
 **Saved Views:**
 - Users can save their filter combinations
 - Pre-built views for common use cases (e.g., "My Under-Consuming Accounts", "ICE Portfolio Review")
 
-**Persona-Based Access:**
-- AEs see only their assigned accounts
-- RVPs see their organization's accounts
-- OU Leaders see their full OU
-- Admin/Leadership can view all
+### 4.3.1 Role-Level Security (RLS) & Access Control
+
+**Tableau Next RLS Implementation:**
+- **Automatic Data Filtering:** Tableau Next provides built-in Role-Level Security (RLS) capabilities that automatically filter data based on the logged-in user's role and account assignments.
+
+**Access Control by Persona:**
+- **Account Executives (AEs):** 
+  - See only accounts assigned to them in Salesforce CRM
+  - RLS automatically filters all dashboard views to their account portfolio
+  - No manual filtering required - data is pre-filtered by Tableau Next RLS
+
+- **Sales Managers / RVPs:**
+  - See accounts assigned to their team members
+  - RLS filters based on Salesforce account ownership hierarchy
+  - Can view aggregate metrics for their organization
+
+- **OU Leaders:**
+  - See accounts within their organizational unit
+  - RLS filters based on OU hierarchy in Salesforce
+  - Full visibility to portfolio-level metrics
+
+- **Admin/Leadership:**
+  - Can view all accounts globally
+  - RLS configured to allow cross-OU visibility for strategic roles
+
+**Technical Implementation:**
+- RLS rules configured in Tableau Next data source
+- Based on Salesforce user profile and account ownership
+- No additional authentication required - leverages Salesforce SSO
+- Filters applied at data source level for performance and security
+
+**Benefits:**
+- **Security:** Ensures users only see data they're authorized to view
+- **Performance:** Pre-filtered data reduces query load and improves dashboard load times
+- **User Experience:** No need for users to manually filter to their accounts - dashboard automatically shows relevant data
+- **Compliance:** Meets data privacy and access control requirements
 
 ---
 
@@ -463,6 +514,7 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
    ```
 
 2. **Consumption Cohorts:**
+   - No Consumption: Accounts with zero usage/consumption
    - Under Consuming: CRR < 25%
    - Consuming: CRR 25% - 70%
    - Consuming Well: CRR > 70%
@@ -572,12 +624,16 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 ### 5.3 Security & Privacy
 
 - **Authentication:** Salesforce SSO required
-- **Authorization:** Role-based access control (RBAC)
-  - AEs: View own accounts only
-  - Managers: View team accounts
-  - Executives: View org/global data
+- **Authorization:** Role-Level Security (RLS) via Tableau Next
+  - **RLS Implementation:** Tableau Next automatically filters data based on user's Salesforce role and account assignments
+  - **AEs:** View own accounts only (automatically filtered by RLS)
+  - **Managers/RVPs:** View team accounts (filtered by Salesforce account ownership hierarchy)
+  - **OU Leaders:** View accounts within their organizational unit (filtered by OU hierarchy)
+  - **Executives/Admin:** View all accounts globally (RLS configured for cross-OU access)
+  - **No Manual Filtering Required:** RLS ensures users only see authorized data without manual intervention
 - **Data Sensitivity:** PHI/PII compliance (if customer data included)
 - **Audit Logging:** Track user access and data exports
+- **RLS Performance:** Pre-filtered data at source level improves query performance and reduces load times
 
 ### 5.4 Usability
 
@@ -638,6 +694,7 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 - **Reuse Existing Pipelines:** Leverage existing data pipelines from Usage Upsell dashboard
 - **Shameem's Team:** Data engineering led by Shameem Syedmohamed
 - **EDW Deprecation:** Some current EDW tables are being shut down with Tableau Next migration; ensure fields needed are migrated
+- **RLS Configuration:** Role-Level Security rules must be configured in Tableau Next data source to automatically filter data based on Salesforce user profile and account ownership. This eliminates the need for manual filtering and ensures data security at the source level.
 
 ### 6.3 Integration Points
 
@@ -649,11 +706,13 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 ### 6.4 Development Phases
 
 **Phase 1: MVP (Post-CKO, Target Q1 2026)**
-- Executive Summary View
-- Agent Force Adoption Funnel
-- Data Cloud Adoption View
-- Consumption Detail View (core metrics)
-- Basic filtering (OU, Product, Cohort)
+- Executive Summary View (Total ACV, Total Pipe Gen, NCR, Avg CRR, Stuck Accounts metrics, Product Breakdown with Used-first display, Consumption Cohorts including "No Consumption")
+- Agent Force Adoption Funnel (funnel visualization only)
+- Data Cloud Adoption View (funnel visualization only)
+- Resource, Implementation & Estimation Summary (unified combined section)
+- Consumption Detail View (expanded table with all columns: Implementation Type, Resource, Estimated, Contracted, Agents metrics, DSC metrics, Einstein Request metrics)
+- Manager Level filters (1-7) plus Product, AOV Band, Consumption Cohort, Resource Engagement, Account Name, Time Period
+- RLS implementation via Tableau Next (automatic data filtering by user role)
 
 **Phase 2: Enhanced Functionality (Q2 2026)**
 - Resource Engagement View
@@ -755,13 +814,16 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 ### 9.1 MVP Acceptance Criteria
 
 **Functional:**
-- ✅ All primary views render with accurate data (Executive, AF Funnel, DC Adoption, Consumption Detail)
-- ✅ Filters work correctly (OU, Product, Cohort, AOV Band)
+- ✅ All primary views render with accurate data (Executive Summary with stuck metrics, AF Funnel, DC Adoption, Resource/Implementation/Estimation Summary, Consumption Detail)
+- ✅ Filters work correctly (Manager Levels 1-7, Product, AOV Band, Consumption Cohort including "No Consumption", Resource Engagement, Account Name, Time Period)
+- ✅ RLS automatically filters data based on user role (AEs see only their accounts, managers see team accounts, OU leaders see OU accounts)
 - ✅ Data refreshes nightly, visible by 6 AM PT
 - ✅ Users can export CSV from any table view
-- ✅ Persona-based access control enforced (AEs see only their accounts)
+- ✅ Executive Summary displays Total ACV and Total Pipe Gen metrics
+- ✅ Product Breakdown emphasizes Used over Allowance
+- ✅ Consumption Detail table includes all expanded columns (Implementation Type, Resource, Estimated, Contracted, Agents metrics, DSC metrics, Einstein Request metrics)
 - ✅ NCR data displays at entitlement level
-- ✅ CRR and cohorts calculate correctly per product team definitions
+- ✅ CRR and cohorts calculate correctly per product team definitions (including "No Consumption" cohort)
 
 **Non-Functional:**
 - ✅ Dashboard loads in <3 seconds
@@ -854,6 +916,7 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 - **Cloud Success:** Success resources focused on cloud adoption (workshops, coaching)
 - **Utilization %:** Actual usage divided by total allowance (what's been consumed vs. purchased)
 - **Consumption Cohorts:**
+  - No Consumption: Accounts with zero usage/consumption
   - Under Consuming: CRR < 25%
   - Consuming: CRR 25-70%
   - Consuming Well: CRR > 70%
@@ -932,12 +995,14 @@ Srivatsan Vasudevan has shared a canvas with detailed:
 |---------|------|--------|---------|
 | 0.1 | Jan 19, 2026 | Brandon Lam | Initial draft based on Dec 18 & Jan 8 meetings |
 | 1.0 | Jan 19, 2026 | Brandon Lam | Complete PRD for team review |
+| 2.0 | Jan 22, 2026 | Brandon Lam | Updated based on wireframe v2.0 implementation: Added Manager Level filters (1-7), updated Executive Summary metrics (Total ACV, Total Pipe Gen), added "No Consumption" cohort, combined Resource/Implementation/Estimation sections, expanded Consumption Detail table columns, added RLS discussion, removed Manager Hierarchy references |
 
 ---
 
 **Next Steps:**
-1. **Jan 20-21:** Share PRD with Srivatsan, Deb, Jonathan for feedback
-2. **Jan 22:** Team review session (Shameem, Varsha, Derek, Brandon)
+1. ✅ **Jan 22:** Team review session completed - wireframe v2.0 finalized
+2. ✅ **Jan 22:** PRD updated to reflect wireframe implementation and RLS approach
 3. **Jan 24:** Finalize LOE estimate and sequencing
 4. **Jan 27:** Present timeline and plan to leadership for approval
+5. **Post-CKO:** Begin data pipeline development and Tableau Next dashboard build with RLS configuration
 
