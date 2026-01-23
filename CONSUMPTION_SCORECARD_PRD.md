@@ -490,7 +490,9 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
 6. **Data Cloud Adoption:**
    - Connected Data
    - Activated Data
-   - Source: Data Cloud 360 tool (launched recently, backend Snowflake queries)
+   - Source: [Tableau - DnA Data Cloud Customer Journey Dashboard](https://prod-uswest-c.online.tableau.com/#/site/salesforce/views/DnA-DataCloudCustomerJourney_17218303230530/AdoptionZones-UsageCategoriesView?:iid=1)
+   - Contains Adoption Zones and Usage Categories views
+   - Backend Snowflake queries power the Tableau dashboard
 
 7. **Resource Engagement:**
    - FDE engagements
@@ -676,7 +678,8 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
   ├─ Revenue Metrics Dashboard
   ├─ Product Scorecard
   ├─ Agent Force Funnel (Pia's tables)
-  ├─ Data Cloud 360
+  ├─ Data Cloud Customer Journey (Tableau Dashboard)
+  │   └─ Source: https://prod-uswest-c.online.tableau.com/#/site/salesforce/views/DnA-DataCloudCustomerJourney_17218303230530/AdoptionZones-UsageCategoriesView?:iid=1
   └─ Org62
          ↓
 [Snowflake Data Warehouse]
@@ -958,14 +961,21 @@ This PRD outlines the requirements for building a unified Consumption Scorecard 
    - Dec 18, 2025: Initial requirements gathering
    - Jan 8, 2026: FY27 planning, MVP timeline discussion
 
-### 12.3 Data Source Canvas
+### 12.3 Data Source Canvas & Queries
 
+**Slack Channel - Data Queries:**
+- [Salesforce Enterprise Slack - Data Queries Archive](https://salesforce.enterprise.slack.com/archives/C0A3ZFPSW8P)
+- Contains detailed data queries and SQL scripts for consumption metrics
+- Reference for data engineering team when building Snowflake views
+- Includes discussions on data sources and transformations
+
+**Additional Documentation:**
 Srivatsan Vasudevan has shared a canvas with detailed:
 - Snowflake queries for each data source
 - EDW table names and fields
 - Data lineage documentation
 
-**Action Item:** Shameem to review canvas and validate all sources are accessible post-Tableau Next migration.
+**Action Item:** Shameem to review canvas and Slack channel queries, validate all sources are accessible post-Tableau Next migration.
 
 ### 12.4 Contact Information
 
@@ -986,6 +996,20 @@ Srivatsan Vasudevan has shared a canvas with detailed:
 **Executive Sponsors:**
 - Mark Sullivan (OU Leader)
 - Clara Sanchez (Field Leader)
+
+### 12.5 Important Resources
+
+**Data Queries & Documentation:**
+- **Slack Channel - Data Queries:** [Salesforce Enterprise Slack - Data Queries Archive](https://salesforce.enterprise.slack.com/archives/C0A3ZFPSW8P)
+  - Contains detailed data queries and SQL scripts for consumption metrics
+  - Reference for data engineering team when building Snowflake views
+  - Includes discussions on data sources and transformations
+
+**Data Sources:**
+- **Data Cloud Customer Journey Dashboard:** [Tableau - DnA Data Cloud Customer Journey](https://prod-uswest-c.online.tableau.com/#/site/salesforce/views/DnA-DataCloudCustomerJourney_17218303230530/AdoptionZones-UsageCategoriesView?:iid=1)
+  - Primary source for Data Cloud adoption and usage data
+  - Contains Adoption Zones and Usage Categories views
+  - Used for Data Cloud adoption funnel metrics and stuck account identification
 
 ---
 
