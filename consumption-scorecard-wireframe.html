@@ -705,9 +705,10 @@
                         <label class="filter-label">Resource Engagement</label>
                         <select class="filter-select">
                             <option>All</option>
-                            <option>Has FDE</option>
                             <option>Has AFDC Consumption Seller</option>
-                            <option>Has Cloud Success</option>
+                            <option>Has Customer Success Account</option>
+                            <option>Has CSG Account Partner</option>
+                            <option>Has PAM</option>
                             <option>No Resource</option>
                         </select>
                     </div>
@@ -1070,22 +1071,41 @@
                         <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Resource Engagement</h4>
                         <div class="resource-icons">
                             <div class="resource-card">
-                                <div class="resource-card-icon">FDE</div>
-                                <div class="resource-card-name">Forward Deployed Engineers</div>
-                                <div class="resource-card-count">342</div>
-                                <div style="font-size: 11px; color: var(--gray-500); margin-top: 4px;">accounts covered</div>
-                            </div>
-                            <div class="resource-card">
                                 <div class="resource-card-icon" style="background: var(--sf-teal);">ACS</div>
                                 <div class="resource-card-name">AFDC Consumption Seller</div>
                                 <div class="resource-card-count">909</div>
                                 <div style="font-size: 11px; color: var(--gray-500); margin-top: 4px;">accounts covered</div>
                             </div>
                             <div class="resource-card">
-                                <div class="resource-card-icon" style="background: var(--sf-purple);">CS</div>
-                                <div class="resource-card-name">Cloud Success</div>
+                                <div class="resource-card-icon" style="background: var(--sf-purple);">CSA</div>
+                                <div class="resource-card-name">Customer Success Account</div>
                                 <div class="resource-card-count">1,245</div>
                                 <div style="font-size: 11px; color: var(--gray-500); margin-top: 4px;">accounts covered</div>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-card-icon" style="background: var(--sf-orange);">CSG</div>
+                                <div class="resource-card-name">CSG Account Partner</div>
+                                <div class="resource-card-count">856</div>
+                                <div style="font-size: 11px; color: var(--gray-500); margin-top: 4px;">accounts covered</div>
+                            </div>
+                            <div class="resource-card">
+                                <div class="resource-card-icon" style="background: var(--sf-blue);">PAM</div>
+                                <div class="resource-card-name">PAM</div>
+                                <div class="resource-card-count">1,102</div>
+                                <div style="font-size: 11px; color: var(--gray-500); margin-top: 4px;">accounts covered</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Coming Soon Resources -->
+                        <div style="margin-top: 24px; padding: 16px; border: 2px dashed var(--gray-300); border-radius: 8px; background: var(--gray-50); opacity: 0.7;">
+                            <div style="font-size: 12px; font-weight: 600; color: var(--gray-500); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;">Coming Soon</div>
+                            <div class="resource-icons">
+                                <div class="resource-card" style="opacity: 0.5;">
+                                    <div class="resource-card-icon">FDE</div>
+                                    <div class="resource-card-name">Forward Deployed Engineers</div>
+                                    <div class="resource-card-count">342</div>
+                                    <div style="font-size: 11px; color: var(--gray-500); margin-top: 4px;">accounts covered</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1168,9 +1188,10 @@
                                 <th>Allowance</th>
                                 <th>CRR</th>
                                 <th>Consumption Cohort</th>
-                                <th>FDE #</th>
                                 <th>AFDC Consumption Seller #</th>
-                                <th>Cloud Success #</th>
+                                <th>Customer Success Account #</th>
+                                <th>CSG Account Partner #</th>
+                                <th>PAM #</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1185,6 +1206,7 @@
                                 <td>1</td>
                                 <td>0</td>
                                 <td>0</td>
+                                <td>1</td>
                             </tr>
                             <tr>
                                 <td style="font-weight: 600;">Globex Inc</td>
@@ -1197,6 +1219,7 @@
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
+                                <td>0</td>
                             </tr>
                             <tr>
                                 <td style="font-weight: 600;">Initech Ltd</td>
@@ -1206,8 +1229,9 @@
                                 <td>2.5B</td>
                                 <td style="color: var(--sf-orange); font-weight: 600;">48%</td>
                                 <td><span class="status-badge scheduled">Consuming</span></td>
-                                <td>0</td>
                                 <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
                                 <td>0</td>
                             </tr>
                             <tr>
@@ -1221,6 +1245,7 @@
                                 <td>0</td>
                                 <td>0</td>
                                 <td>1</td>
+                                <td>1</td>
                             </tr>
                             <tr>
                                 <td style="font-weight: 600;">Stark Industries</td>
@@ -1230,6 +1255,7 @@
                                 <td>5B</td>
                                 <td style="color: var(--sf-red); font-weight: 600;">17%</td>
                                 <td><span class="status-badge" style="background: #fef3f2; color: #b42318;">Under Consuming</span></td>
+                                <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
