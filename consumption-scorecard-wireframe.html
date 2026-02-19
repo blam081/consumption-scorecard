@@ -884,57 +884,33 @@
                     <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Entitlement Breakdown</h3>
                     <div class="metrics-grid">
                         <div class="metric-card">
-                            <div class="metric-label">Flex Credits - Used</div>
-                            <div style="display: flex; align-items: baseline; gap: 12px;">
-                                <div class="metric-value">458M</div>
-                                <div style="padding: 8px 12px; border: 2px dashed var(--gray-300); border-radius: 6px; background: var(--gray-50);">
-                                    <div style="font-size: 10px; font-weight: 600; color: var(--gray-500); margin-bottom: 4px; text-transform: uppercase;">Coming Soon</div>
-                                    <div style="font-size: 14px; font-weight: 600; color: var(--sf-purple);">
-                                        Estimation: 520M
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="font-size: 14px; font-weight: 600; color: var(--sf-blue); margin-top: 4px;">
-                                CRR: 3.1%
-                            </div>
-                            <div style="font-size: 12px; color: var(--gray-500); margin-top: 4px;">
-                                Allowance: 81.7B
-                            </div>
-                        </div>
-                        <div class="metric-card">
                             <div class="metric-label">Conversations - Used</div>
-                            <div style="display: flex; align-items: baseline; gap: 12px;">
-                                <div class="metric-value">5.71M</div>
-                                <div style="padding: 8px 12px; border: 2px dashed var(--gray-300); border-radius: 6px; background: var(--gray-50);">
-                                    <div style="font-size: 10px; font-weight: 600; color: var(--gray-500); margin-bottom: 4px; text-transform: uppercase;">Coming Soon</div>
-                                    <div style="font-size: 14px; font-weight: 600; color: var(--sf-purple);">
-                                        Estimation: 6.5M
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="font-size: 14px; font-weight: 600; color: var(--sf-blue); margin-top: 4px;">
+                            <div class="metric-value">5.71M</div>
+                            <div style="font-size: 16px; font-weight: 600; color: var(--sf-blue); margin-top: 4px;">
                                 CRR: 4%
                             </div>
-                            <div style="font-size: 12px; color: var(--gray-500); margin-top: 4px;">
-                                Allowance: 720M
+                            <div style="font-size: 14px; color: var(--gray-500); margin-top: 4px;">
+                                Allowance: $720M
                             </div>
                         </div>
                         <div class="metric-card">
-                            <div class="metric-label">Data Service Credits - Used</div>
-                            <div style="display: flex; align-items: baseline; gap: 12px;">
-                                <div class="metric-value">208B</div>
-                                <div style="padding: 8px 12px; border: 2px dashed var(--gray-300); border-radius: 6px; background: var(--gray-50);">
-                                    <div style="font-size: 10px; font-weight: 600; color: var(--gray-500); margin-bottom: 4px; text-transform: uppercase;">Coming Soon</div>
-                                    <div style="font-size: 14px; font-weight: 600; color: var(--sf-purple);">
-                                        Estimation: 235B
-                                    </div>
-                                </div>
+                            <div class="metric-label">Flex Credits - Used</div>
+                            <div class="metric-value">458M</div>
+                            <div style="font-size: 16px; font-weight: 600; color: var(--sf-blue); margin-top: 4px;">
+                                CRR: 3.1%
                             </div>
-                            <div style="font-size: 14px; font-weight: 600; color: var(--sf-blue); margin-top: 4px;">
-                                CRR: 45%
+                            <div style="font-size: 14px; color: var(--gray-500); margin-top: 4px;">
+                                Allowance: $81.7B
                             </div>
-                            <div style="font-size: 12px; color: var(--gray-500); margin-top: 4px;">
-                                Allowance: 1.78T
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Leads Worked - Used</div>
+                            <div class="metric-value">125K</div>
+                            <div style="font-size: 16px; font-weight: 600; color: var(--sf-blue); margin-top: 4px;">
+                                CRR: 2.8%
+                            </div>
+                            <div style="font-size: 14px; color: var(--gray-500); margin-top: 4px;">
+                                Allowance: $4.5M
                             </div>
                         </div>
                     </div>
@@ -942,26 +918,58 @@
 
                 <div style="margin-top: 30px;">
                     <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--gray-700);">Consumption Cohorts</h3>
-                    <div class="cohort-pills">
-                        <div class="cohort-pill" style="background: #f5f5f5; border-color: #9ca3af; color: #374151;">
-                            <div class="cohort-name">No Consumption</div>
-                            <div class="cohort-value">892</div>
-                            <div class="cohort-percent">7.1% of accounts</div>
+                    
+                    <!-- Agent Force Cohorts -->
+                    <div style="margin-bottom: 24px;">
+                        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--gray-600);">Agent Force</h4>
+                        <div class="cohort-pills">
+                            <div class="cohort-pill" style="background: #f5f5f5; border-color: #9ca3af; color: #374151;">
+                                <div class="cohort-name">No Consumption</div>
+                                <div class="cohort-value">445</div>
+                                <div class="cohort-percent">6.0% of accounts</div>
+                            </div>
+                            <div class="cohort-pill under-consuming">
+                                <div class="cohort-name">Under Consuming</div>
+                                <div class="cohort-value">703</div>
+                                <div class="cohort-percent">9.5% of accounts</div>
+                            </div>
+                            <div class="cohort-pill consuming">
+                                <div class="cohort-name">Consuming</div>
+                                <div class="cohort-value">4,062</div>
+                                <div class="cohort-percent">55.1% of accounts</div>
+                            </div>
+                            <div class="cohort-pill consuming-well">
+                                <div class="cohort-name">Consuming Well</div>
+                                <div class="cohort-value">2,169</div>
+                                <div class="cohort-percent">29.4% of accounts</div>
+                            </div>
                         </div>
-                        <div class="cohort-pill under-consuming">
-                            <div class="cohort-name">Under Consuming</div>
-                            <div class="cohort-value">1,406</div>
-                            <div class="cohort-percent">11.2% of accounts</div>
-                        </div>
-                        <div class="cohort-pill consuming">
-                            <div class="cohort-name">Consuming</div>
-                            <div class="cohort-value">8,124</div>
-                            <div class="cohort-percent">65.0% of accounts</div>
-                        </div>
-                        <div class="cohort-pill consuming-well">
-                            <div class="cohort-name">Consuming Well</div>
-                            <div class="cohort-value">2,085</div>
-                            <div class="cohort-percent">16.7% of accounts</div>
+                    </div>
+
+                    <!-- Data Cloud Cohorts -->
+                    <div>
+                        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--gray-600);">Data Cloud</h4>
+                        <div class="cohort-pills">
+                            <div class="cohort-pill" style="background: #f5f5f5; border-color: #9ca3af; color: #374151;">
+                                <div class="cohort-name">No Consumption</div>
+                                <div class="cohort-value">447</div>
+                                <div class="cohort-percent">49.8% of accounts</div>
+                            </div>
+                            <div class="cohort-pill under-consuming">
+                                <div class="cohort-name">Under Consuming</div>
+                                <div class="cohort-value">180</div>
+                                <div class="cohort-percent">20.0% of accounts</div>
+                            </div>
+                            <div class="cohort-pill consuming">
+                                <div class="cohort-name">Consuming</div>
+                                <div class="cohort-value">206</div>
+                                <div class="cohort-percent">22.9% of accounts</div>
+                            </div>
+                            <div class="cohort-pill consuming-well">
+                                <div class="cohort-name">Consuming Well</div>
+                                <div class="cohort-value">65</div>
+                                <div class="cohort-percent">7.2% of accounts</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -999,6 +1007,11 @@
                                 <span class="stage-count">890 accounts (12%)</span>
                             </div>
                         </div>
+                        <div style="margin-top: 20px; text-align: center;">
+                            <p style="font-size: 14px; color: var(--gray-600);">
+                                For more information, <a href="#" style="color: var(--sf-blue); text-decoration: underline;">click here</a>.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Data Cloud Adoption -->
@@ -1030,12 +1043,48 @@
                                 <span class="stage-count">285 accounts (32%)</span>
                             </div>
                         </div>
+                        <div style="margin-top: 20px; text-align: center;">
+                            <p style="font-size: 14px; color: var(--gray-600);">
+                                For more information, <a href="#" style="color: var(--sf-blue); text-decoration: underline;">click here</a>.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div style="margin-top: 20px; text-align: center;">
-                    <p style="font-size: 14px; color: var(--gray-600);">
-                        For more information, <a href="#" style="color: var(--sf-blue); text-decoration: underline;">click here</a>.
-                    </p>
+
+                    <!-- Data Cloud Adoption -->
+                    <div>
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                                </svg>
+                                Data Cloud Consumption Funnel
+                            </h2>
+                        </div>
+
+                        <div class="funnel-stages">
+                            <div class="funnel-stage">
+                                <span class="stage-name">1. Paid Customers</span>
+                                <span class="stage-count">898 accounts</span>
+                            </div>
+                            <div class="funnel-stage">
+                                <span class="stage-name">2. Provisioned</span>
+                                <span class="stage-count">720 accounts (80%)</span>
+                            </div>
+                            <div class="funnel-stage">
+                                <span class="stage-name">3. Connected Data</span>
+                                <span class="stage-count">520 accounts (58%)</span>
+                            </div>
+                            <div class="funnel-stage">
+                                <span class="stage-name">4. Activated Data</span>
+                                <span class="stage-count">285 accounts (32%)</span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px; text-align: center;">
+                            <p style="font-size: 14px; color: var(--gray-600);">
+                                For more information, <a href="#" style="color: var(--sf-blue); text-decoration: underline;">click here</a>.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
